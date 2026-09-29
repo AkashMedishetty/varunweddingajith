@@ -312,6 +312,7 @@ svg = (TMP / "p1.svg").read_text()
 body = svg.split("</defs>", 1)[1]
 REG = (256, 406, 343, 474)   # points, page 1
 picked = []
+n_white = 0
 ux0 = uy0 = 1e9
 ux1 = uy1 = -1e9
 for m in re.finditer(r"<path [^>]*/>", body):
@@ -328,15 +329,20 @@ for m in re.finditer(r"<path [^>]*/>", body):
     bx0, by0 = pts.min(0)
     bx1, by1 = pts.max(0)
     if bx0 >= REG[0] and by0 >= REG[1] and bx1 <= REG[2] and by1 <= REG[3]:
+        fm = re.search(r' fill="([^"]*)"', tag)
+        white = bool(fm) and fm.group(1).replace(" ", "").startswith("rgb(100%,100%,100%")
         clean = re.sub(r' fill="[^"]*"', "", tag)
         clean = re.sub(r' fill-opacity="[^"]*"', "", clean)
+        clean = clean.replace("<path ", '<path class="%s" ' % ("w" if white else "k"), 1)
         picked.append(clean)
+        n_white += white
         ux0, uy0, ux1, uy1 = min(ux0, bx0), min(uy0, by0), max(ux1, bx1), max(uy1, by1)
 pad = 1.5
 vb = f"{ux0 - pad:.2f} {uy0 - pad:.2f} {ux1 - ux0 + 2 * pad:.2f} {uy1 - uy0 + 2 * pad:.2f}"
 mono = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" class="vb-svg" aria-hidden="true">'
         f'<g class="vb-paths">{"".join(picked)}</g></svg>')
 (OUT / "vb.svg").write_text(mono)
+subprocess.run([sys.executable, str(ROOT / "tools" / "monogram.py")], check=True)   # coloured version
 manifest["vb"] = {"src": "assets/vb.svg", "paths": len(picked), "viewBox": vb}
 print("VB monogram paths", len(picked), "viewBox", vb, (OUT / "vb.svg").stat().st_size // 1024, "KB")
 

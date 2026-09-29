@@ -48,6 +48,7 @@
   };
   /* the time is fixed at 11:20; scrolling only decides when the tera drops */
   var MU_AT = 0.34;
+  A.muAt = MU_AT;
   A.muhurtham = function (g, ST) {
     A.muLayout();
     if (VB.reduce || !g || !ST) { $('#tera').style.opacity = 0; return; }

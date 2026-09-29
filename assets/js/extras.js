@@ -107,23 +107,30 @@
     $('#share-wa').href = 'https://wa.me/?text=' + encodeURIComponent(msg + base + (te ? '' : '?l=en'));
   };
 
-  /* ---------------------------------------------------------------- the VB monogram draws itself */
+  /* ---------------------------------------------------------------- the VB monogram on a paper seal:
+     the letters draw in leaf green, the water flows in, the lotus blooms last */
   X.monogram = function (g, ST) {
     var box = $('#vb');
     fetch('assets/vb.svg').then(function (r) { return r.text(); }).then(function (txt) {
       box.innerHTML = txt;
       var svg = box.querySelector('svg');
-      var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-      defs.innerHTML = '<linearGradient id="vbgold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6420"/><stop offset=".45" stop-color="#f3d58c"/><stop offset=".6" stop-color="#fff1c9"/><stop offset="1" stop-color="#a9791f"/></linearGradient>';
-      svg.insertBefore(defs, svg.firstChild);
-      var paths = $$('path', svg);
-      if (VB.reduce || !g) { paths.forEach(function (p) { p.style.fillOpacity = 1; p.style.strokeOpacity = 0; }); return; }
-      paths.forEach(function (p) { var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+      var letters = $$('path.v, path.vl, path.b', svg);
+      var water = $$('path.sw1, path.sw2, path.sw3', svg);
+      var lotus = $$('path.lo1, path.lo2, path.lo3', svg), bloom = svg.querySelector('g.lotus');
+      var lined = letters.concat(water);
+      if (VB.reduce || !g || !ST) { lined.forEach(function (p) { p.style.fillOpacity = 1; p.style.strokeOpacity = 0; }); return; }
+      lined.forEach(function (p) { var L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L; });
+      g.set(lotus, { opacity: 0 });
+      if (bloom) g.set(bloom, { scale: 0.55, transformOrigin: '50% 100%' });
       ST.create({ trigger: box, start: 'top 85%', once: true, onEnter: function () {
-        g.timeline()
-          .to(paths, { strokeDashoffset: 0, duration: 2.6, ease: 'power2.inOut', stagger: 0.04 })
-          .to(paths, { fillOpacity: 1, duration: 1.2, ease: 'power2.out', stagger: 0.02 }, 1.8)
-          .to(paths, { strokeOpacity: 0, duration: 0.8 }, 2.8);
+        var tl = g.timeline()
+          .to(letters, { strokeDashoffset: 0, duration: 2, ease: 'power2.inOut', stagger: 0.08 })
+          .to(letters, { fillOpacity: 1, duration: 1, ease: 'power2.out' }, 1.4)
+          .to(water, { strokeDashoffset: 0, duration: 1.3, ease: 'power2.inOut', stagger: 0.07 }, 1.2)
+          .to(water, { fillOpacity: 1, duration: 0.8, ease: 'power2.out', stagger: 0.05 }, 2)
+          .to(lotus, { opacity: 1, duration: 0.9, ease: 'power2.out', stagger: 0.06 }, 2.5)
+          .to(lined, { strokeOpacity: 0, duration: 0.8 }, 3.3);
+        if (bloom) tl.to(bloom, { scale: 1, duration: 1.3, ease: 'back.out(1.5)' }, 2.5);
       } });
     }).catch(function () { box.style.display = 'none'; });
   };
