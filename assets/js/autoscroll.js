@@ -7,7 +7,7 @@
   'use strict';
   var VB = window.VB, $ = VB.$;
   var AS = VB.auto = { on: false, wanted: true, ended: false, waiting: false };
-  var RESUME_MS = 3500, START_MS = 2600;
+  var RESUME_MS = 3000, START_MS = 2000;
   var fy = 0, v = 0, last = 0, raf = 0, holdUntil = 0, holds = [], hi = 0, expectY = -1, idle = 0, started = false;
   var btn, rail, fill, dot, railH = 1, painting = false;
   var CHAPTERS = ['#aahvanam', '#families', '#muhurtham', '#knots', '#talambralu', '#venue', '#night', '#hosts'];
@@ -35,16 +35,16 @@
       var r = el.getBoundingClientRect();
       list.push({ y: r.top + curY() + r.height / 2 - vh / 2, ms: ms });
     };
-    mid('#aahvanam .shloka', 1600);
-    mid('#seam', 1400);
-    act('#muhurtham', (VB.acts.muAt || 0.34) + 0.04, 4200);
-    act('#knots', 0.27, 1800);
-    act('#knots', 0.5, 1800);
-    act('#knots', 0.76, 3200);
-    mid('#tb-stage', 3800);
-    mid('#venue .actions', 2600);
-    act('#night', 0.9, 3400);
-    mid('#vb', 2400);
+    mid('#aahvanam .shloka', 1200);
+    mid('#seam', 900);
+    act('#muhurtham', (VB.acts.muAt || 0.34) + 0.04, 3000);
+    act('#knots', 0.27, 1100);
+    act('#knots', 0.5, 1100);
+    act('#knots', 0.76, 2200);
+    mid('#tb-stage', 2600);
+    mid('#venue .actions', 1600);
+    act('#night', 0.9, 2400);
+    mid('#vb', 2000);
     holds = list.filter(function (h) { return h.y > 0; }).sort(function (a, b) { return a.y - b.y; });
     hi = 0;
     while (hi < holds.length && holds[hi].y < curY() - 2) hi++;
@@ -63,14 +63,14 @@
     if (!AS.on) return;
     var dt = Math.min(0.05, (now - (last || now)) / 1000);
     last = now;
-    var base = VB.sh / 6.2, vt = base;
+    var base = VB.sh / 3, vt = base;
     if (now < holdUntil) vt = 0;
     else if (hi < holds.length) {
       var dist = holds[hi].y - fy;
       if (dist <= 0.75) { holdUntil = now + holds[hi].ms; hi++; vt = 0; }
-      else vt = base * VB.clamp(dist / (base * 1.2), 0.07, 1);
+      else vt = base * VB.clamp(dist / (base * 0.5), 0.15, 1);
     }
-    v += (vt - v) * Math.min(1, dt * 2.4);
+    v += (vt - v) * Math.min(1, dt * 3.5);
     if (vt === 0 && v < 2) v = 0;
     if (v > 0) {
       var m = maxY();
