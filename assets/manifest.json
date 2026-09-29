@@ -1,0 +1,169 @@
+{
+ "leaves": {
+  "src": "assets/leaves.webp",
+  "w": 640,
+  "h": 727,
+  "kb": 81
+ },
+ "garland": {
+  "src": "assets/garland.webp",
+  "w": 103,
+  "h": 1000,
+  "kb": 37
+ },
+ "couple": {
+  "src": "assets/couple.webp",
+  "w": 674,
+  "h": 1100,
+  "kb": 131
+ },
+ "cow": {
+  "src": "assets/cow.webp",
+  "w": 520,
+  "h": 373,
+  "kb": 46
+ },
+ "ganesha": {
+  "src": "assets/ganesha.webp",
+  "w": 600,
+  "h": 627,
+  "kb": 132,
+  "center": [
+   0.4992,
+   0.4992
+  ]
+ },
+ "jeelakarra": {
+  "src": "assets/jeelakarra.webp",
+  "w": 1100,
+  "h": 710,
+  "kb": 155
+ },
+ "mangalya": {
+  "src": "assets/mangalya.webp",
+  "w": 1100,
+  "h": 863,
+  "kb": 191
+ },
+ "talambralu": {
+  "src": "assets/talambralu.webp",
+  "w": 1100,
+  "h": 718,
+  "kb": 181
+ },
+ "arundhati": {
+  "src": "assets/arundhati.webp",
+  "w": 709,
+  "h": 1150,
+  "kb": 121,
+  "finger": [
+   0.0227,
+   0.0052
+  ],
+  "dir": [
+   -0.5691,
+   -0.8223
+  ]
+ },
+ "kalasham": {
+  "src": "assets/kalasham.webp",
+  "w": 600,
+  "h": 703,
+  "kb": 108
+ },
+ "temple": {
+  "src": "assets/temple.webp",
+  "time": "assets/temple-time.png",
+  "w": 1086,
+  "h": 1154,
+  "circle": [
+   0.4991,
+   0.3102,
+   0.041
+  ],
+  "door": [
+   0.4595,
+   0.8882
+  ],
+  "kb": 232
+ },
+ "paper": {
+  "src": "assets/paper.webp",
+  "w": 720,
+  "h": 720,
+  "mean": [
+   243,
+   231,
+   209
+  ]
+ },
+ "dabs": [
+  "assets/dab1.webp",
+  "assets/dab2.webp"
+ ],
+ "la-ganesha": {
+  "src": "assets/la-ganesha.webp",
+  "w": 415,
+  "h": 480,
+  "kb": 44
+ },
+ "la-shiva": {
+  "src": "assets/la-shiva.webp",
+  "w": 337,
+  "h": 480,
+  "kb": 43
+ },
+ "la-feast": {
+  "src": "assets/la-feast.webp",
+  "w": 900,
+  "h": 191,
+  "kb": 56
+ },
+ "la-venkatesa": {
+  "src": "assets/la-venkatesa.webp",
+  "w": 479,
+  "h": 352,
+  "kb": 62
+ },
+ "la-couple": {
+  "src": "assets/la-couple.webp",
+  "w": 480,
+  "h": 351,
+  "kb": 45
+ },
+ "la-nadaswaram": {
+  "src": "assets/la-nadaswaram.webp",
+  "w": 480,
+  "h": 308,
+  "kb": 28
+ },
+ "la-handshake": {
+  "src": "assets/la-handshake.webp",
+  "w": 480,
+  "h": 239,
+  "kb": 15
+ },
+ "la-offer": {
+  "src": "assets/la-offer.webp",
+  "w": 381,
+  "h": 444,
+  "kb": 9
+ },
+ "la-flourish": {
+  "src": "assets/la-flourish.webp",
+  "w": 700,
+  "h": 66,
+  "kb": 4
+ },
+ "la-orn": {
+  "src": "assets/la-orn.webp",
+  "w": 700,
+  "h": 163,
+  "kb": 7
+ },
+ "vb": {
+  "src": "assets/vb.svg",
+  "paths": 22,
+  "viewBox": "258.82 412.30 77.71 58.17"
+ }
+}
