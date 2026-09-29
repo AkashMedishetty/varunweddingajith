@@ -16,6 +16,7 @@
     VB.acts.layout();
     if (VB.extras.sizeGrains) VB.extras.sizeGrains();
     if (ST) ST.refresh();
+    if (VB.auto) VB.auto.layout();
   }
 
   VB.measure();
@@ -43,6 +44,7 @@
   VB.extras.monogram(g, ST);
   VB.extras.countdown();
   VB.extras.links();
+  if (VB.auto) VB.auto.init();
 
   $('#lang').addEventListener('click', function (e) {
     e.stopPropagation();
@@ -67,7 +69,10 @@
     document.fonts.addEventListener('loadingdone', function () { VB.hero.placeFly(); if (ST) ST.refresh(); });
   }
 
-  VB.afterOpen = function () { $('#lang').focus({ preventScroll: true }); };
+  VB.afterOpen = function () {
+    $('#lang').focus({ preventScroll: true });
+    if (VB.auto) VB.auto.begin();
+  };
 
   /* loader: wait for fonts + the cover's own images, never longer than 3.5 s */
   var fontsReady = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
