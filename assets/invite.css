@@ -131,7 +131,7 @@ html[data-lang="en"] .star-lab{font-family:var(--en);font-style:italic}
   background:linear-gradient(115deg,transparent 35%,rgba(255,247,214,.85) 48%,transparent 60%);background-size:300% 100%;background-position:120% 0;mix-blend-mode:screen;pointer-events:none}
 
 /* ------------------------------------------------------------------ hero */
-#hero{height:270vh}
+#hero{height:220vh}
 #hero .pin{background-color:var(--paper)}
 #hero .pin.paper-bg::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 80% at 50% 38%,transparent 55%,rgba(120,80,30,.16))}
 #temple-gl,#temple-img{position:absolute;left:0;top:0;pointer-events:none}
@@ -199,7 +199,7 @@ html[data-lang="en"] .fam .par{font-family:var(--en);font-style:italic;font-size
 
 /* ------------------------------------------------------------------ muhurtham (maroon act) */
 .pre-maroon{height:36vh;background:linear-gradient(180deg,rgba(244,232,210,0),#6a1016 70%,var(--maroon))}
-#muhurtham{height:300vh;background:var(--maroon)}
+#muhurtham{height:250vh;background:var(--maroon)}
 #muhurtham .pin{background:radial-gradient(130% 75% at 50% 42%,#6c1219 0%,var(--maroon) 55%,var(--maroon-2) 100%);color:#f6e6c4}
 .mu-top{position:absolute;left:0;right:0;top:calc(var(--v)*6);text-align:center}
 .mu-top .label{color:rgba(236,208,138,.8)}
@@ -229,7 +229,7 @@ html[data-lang="en"] .countdown span{font-family:var(--en);text-transform:upperc
 .post-maroon{height:30vh;background:linear-gradient(180deg,var(--maroon-2),#6a1016 30%,rgba(244,232,210,0))}
 
 /* ------------------------------------------------------------------ mangalya dharana: the painting and three beats of lamplight */
-#knots{height:260vh}
+#knots{height:220vh}
 #mangalya{position:absolute;left:0;top:0;z-index:1;will-change:transform}
 #mangalya img{display:block;width:100%;height:auto}
 .mg-light{position:absolute;left:0;top:0;z-index:2;border-radius:50%;pointer-events:none;opacity:0;mix-blend-mode:screen;will-change:transform,opacity;
@@ -283,7 +283,7 @@ html[data-lang="en"] .btn{font-family:var(--en);font-size:calc(var(--u)*3.2);let
 
 /* ------------------------------------------------------------------ night: arundhati + hosts */
 .pre-night{height:34vh;background:linear-gradient(180deg,rgba(244,232,210,0),#2a2f5c 75%,var(--night-2))}
-#night{height:300vh;background:var(--night)}
+#night{height:240vh;background:var(--night)}
 #night .pin{background:linear-gradient(180deg,var(--night) 0%,#141b4a 55%,#232a63 100%)}
 .nt-top{position:absolute;left:0;right:0;top:calc(var(--v)*6);text-align:center;color:#efe3c6;z-index:3}
 .nt-top .label{color:rgba(236,208,138,.75)}
